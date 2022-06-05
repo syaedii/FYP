@@ -44,6 +44,9 @@ const home = require('./routes/home');
 const room = require('./routes/room');
 //const user = require('./routes/user');
 
+const exam = require('./routes/exam') //xinyi
+const account = require('./routes/account') //xinyi
+
 /* -------------------------------------------- */
 
 //Checking DB conneciton
@@ -78,6 +81,25 @@ io.on("connection", (socket) => {
     })
   });
 });
+
+
+/* xinyi */
+// signup
+app.get("/signup", account.signup);
+
+// login
+app.get("/login", account.login);
+
+// my account
+app.get("/my-account", account.myacc)
+
+// enter exam
+app.get("/enter-session-instructor", exam.enter_instructor)
+app.get("/enter-session-student", exam.enter_student)
+
+// during exam
+app.get("/exam-instructor", exam.in_session_instructor);
+app.get("/exam-student", exam.in_session_student);
 
 /* ----------------------------------- */
 
