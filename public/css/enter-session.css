@@ -2,7 +2,7 @@
   height: 100vh;
 }
 
-.enter-form{
+.slide-page{
   background-color: #fff;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -41,16 +41,22 @@
 
 #img-face-detection > img{
   height: 240px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #img-face-shield > img{
   margin-top: 15px;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
   height: 200px;
 }
 
 #cam-test{
+  margin-left: auto;
+  margin-right: auto;
   height:300px;
   width:600px;
   background-color: #000;
