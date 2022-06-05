@@ -73,3 +73,14 @@
     background-color: #149980;
     border-color: #149980;
 }
+
+.slick-dots li.slick-active button:before {
+  font-size: 16px;
+  color: #6DC3B3;
+  opacity: 90%;
+}
+.slick-dots li button:before {
+  font-size: 14px;
+  color: #6DC3B3;
+  opacity: 40%;
+}
