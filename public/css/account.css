@@ -1,0 +1,90 @@
+.start {
+  height: 100vh;
+  background-image:url("../images/bg-img.jpg");
+  background-position:top;
+  /*background-repeat: no-repeat;*/
+  background-size:cover;
+}
+
+.slide-page{
+  background-color: #fff;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 50px;
+  height: 550px;
+  text-align:center;
+}
+
+#login-div {
+  margin-top: 100px;
+  height: 400px;
+}
+
+#login-div .info-content-small p a:link, a:visited {
+  color: #6DC3B3;
+  text-decoration:none;
+}
+#login-div .info-content-small p a:hover, a:active{
+  color: #149980;
+  text-decoration-line:underline;
+}
+
+.info-title{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.info-content{
+  font-size: 16px;
+}
+
+.info-content-small{
+  font-size: 14px;
+}
+
+label{
+  text-align: left;
+}
+
+#img-face-detection > img{
+  height: 240px;
+  margin-bottom: 30px;
+}
+
+#img-done > img{
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 200px;
+}
+
+/*duplicates exist in other css files*/
+.btn {
+  color: #fff;
+  background-color: #6DC3B3;
+  border-color: #6DC3B3;
+}
+.btn:hover, .btn:focus, .btn.active {
+    color: #fff;
+    background-color: #149980;
+    border-color: #149980;
+}
+
+.badge-pill{
+  font-size: 15px;
+  font-weight: normal;
+  border-radius: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.badge-instructor {
+    background-color: #328FC5;
+    border-color: #328FC5;
+}
+
+.badge-student {
+    background-color: #6DC3B3;
+    border-color: #6DC3B3;
+}

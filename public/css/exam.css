@@ -1,0 +1,80 @@
+.btn {
+  color: #fff;
+  background-color: #6DC3B3;
+  border-color: #6DC3B3;
+}
+.btn:hover, .btn:focus, .btn.active {
+    color: #fff;
+    background-color: #149980;
+    border-color: #149980; /*set the color you want here*/
+}
+
+.row {
+  height: 100vh;
+}
+
+.share-view {
+  margin-top: 10px;
+  height: 100%;
+  background-color: #000;
+}
+
+.toggle-btn {
+  height: 55px;
+  width: 55px;
+}
+
+.toggle-btn .material-icons {
+  font-size: 30px;
+}
+
+#end-btn {
+  font-size: 16px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.modal-dialog{
+  width: 300px;
+  justify-content: center;
+  text-align: center;
+}
+.modal-header > h5 {
+  font-size: 18px;
+}
+
+.participant-list {
+  font-size: 14px;
+}
+.participant-list td {
+  padding: 0.4rem;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  color: #6DC3B3;
+  background-color: #ebfcfa;
+}
+
+.badge-pill{
+  font-size: 11px;
+  font-weight: normal;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.badge-instructor {
+    background-color: #328FC5;
+    border-color: #328FC5;
+}
+
+.badge-student {
+    background-color: #6DC3B3;
+    border-color: #6DC3B3;
+}
+
+#mycam .cam-view {
+  bottom: 0;
+  position: absolute;
+  height: 250px;
+  background-color: #000;
+}
