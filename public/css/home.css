@@ -13,9 +13,9 @@
   text-align: center;
 }
 
-.form-group{
+/* .form-group{
   padding-top: 60px;
-}
+} */
 
 .form-control{
   text-align: center;
@@ -83,4 +83,12 @@
   font-size: 14px;
   color: #6DC3B3;
   opacity: 40%;
+}
+
+.badge-pill{
+  font-size: 15px;
+  font-weight: normal;
+  border-radius: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
 }

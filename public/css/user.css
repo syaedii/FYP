@@ -13,13 +13,12 @@
   margin-left: 100px;
   margin-right: 100px;
   padding: 50px;
-  height: 550px;
+  /* height: 570px; */
   text-align:center;
 }
 
 #login-div {
   margin-top: 100px;
-  height: 400px;
 }
 
 #login-div .info-content-small p a:link, a:visited {
@@ -64,12 +63,12 @@ label{
 }
 
 /*duplicates exist in other css files*/
-.btn {
+.btn-theme {
   color: #fff;
   background-color: #6DC3B3;
   border-color: #6DC3B3;
 }
-.btn:hover, .btn:focus, .btn.active {
+.btn-theme:hover, .btn-theme:focus, .btn-theme.active {
     color: #fff;
     background-color: #149980;
     border-color: #149980;
@@ -102,4 +101,8 @@ label{
   font-size: 14px;
   color: #6DC3B3;
   opacity: 40%;
+}
+
+.hidden {
+  display: none;
 }

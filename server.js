@@ -40,33 +40,48 @@ app.use(session({
 
 /* ---------- User-defined Module ------------- */
 const connection = require("./lib/dbconn"); // DB 연결
+const user = require('./routes/user');
 const home = require('./routes/home');
-const room = require('./routes/room');
-//const user = require('./routes/user');
+const exam = require('./routes/exam');
 
-const exam = require('./routes/exam') //xinyi
-const account = require('./routes/account') //xinyi
+// const room = require('./routes/room');
+// const account = require('./routes/account')
 
 /* -------------------------------------------- */
 
 //Checking DB conneciton
-// db = connection.db;
-// db.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Database connected!");
-// });
+db = connection.db;
+db.connect(function(err) {
+  if (err) throw err;
+  console.log("Database connected!");
+});
 
 /* ------- Section for developing pages ------- */
 
+// Root
 app.get("/", (req, res) => {
-  res.redirect(`/${uuidv4()}`);
+  res.redirect("/home");
 });
+
 
 // Homepage
 app.get("/home", home.main);
 
-// Exam room
-app.get("/:room", room.main);
+app.get("/generate-code", (req, res) => {
+  req.session.entry_code = `${uuidv4()}`;
+  res.redirect("/home");
+});
+
+// Exam session creation
+app.post("/create-session", exam.createSession);
+
+// Enter exam room
+app.get("/exam-room/:entryCode", exam.enterRoom);
+app.get("/exam-room", (req, res) => { res.redirect('/home') });
+app.post("/enter-room", (req, res) => {
+  var entry_code = req.body.entry_code;
+  res.redirect('/exam-room/' + entry_code);
+});
 
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId, userName) => {
@@ -83,21 +98,24 @@ io.on("connection", (socket) => {
 });
 
 
-/* xinyi */
-// signup
-app.get("/signup", account.signup);
+// Signup, Login, Logout
+app.get("/signup", user.signup);
+app.post("/signup", user.signup);
 
-// login
-app.get("/login", account.login);
+app.get("/login", user.login);
+app.post("/login", user.login);
 
-// my account
-app.get("/my-account", account.myacc)
+app.get("/logout", user.logout);
 
-// enter exam
+// Profile
+app.get("/profile", user.profile);
+app.post("/profile", user.saveChanges);
+
+// Enter Exam Room
 app.get("/enter-session-instructor", exam.enter_instructor)
 app.get("/enter-session-student", exam.enter_student)
 
-// during exam
+// During Exam
 app.get("/exam-instructor", exam.in_session_instructor);
 app.get("/exam-student", exam.in_session_student);
 

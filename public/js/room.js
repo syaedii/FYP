@@ -19,7 +19,7 @@ showChat.addEventListener("click", () => {
   document.querySelector(".header__back").style.display = "block";
 });
 
-const user = prompt("Enter your name");
+const user = document.getElementById("name").value + " " + document.getElementById("hakbeon").value;
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
@@ -78,6 +78,9 @@ send.addEventListener("click", (e) => {
   if (text.value.length !== 0) {
     socket.emit("message", text.value);
     text.value = "";
+
+    var objDiv = document.getElementById("chat_window");
+    objDiv.scrollTop = objDiv.scrollHeight;
   }
 });
 
@@ -85,6 +88,9 @@ text.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && text.value.length !== 0) {
     socket.emit("message", text.value);
     text.value = "";
+
+    var objDiv = document.getElementById("chat_window");
+    objDiv.scrollTop = objDiv.scrollHeight;
   }
 });
 

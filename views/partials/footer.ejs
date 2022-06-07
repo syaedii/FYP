@@ -17,7 +17,6 @@
 <script type="text/javascript">
 
   function slider_init(){
-
     $('.slide-holder').slick({
       dots: true,
       slidesToShow:1,
@@ -28,12 +27,17 @@
     });
 
     $('.next-btn').click(
-    function(){$('.slide-holder').slick('slickNext')}
+      function(){$('.slide-holder').slick('slickNext')}
     );
-
   }
 
   slider_init();
+
+  $(document).ready(function(){
+    $('.next-btn').click(
+      function(){$('.slide-holder').slick('slickNext')}
+    );
+  });
 
 </script>
 

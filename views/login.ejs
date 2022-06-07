@@ -1,7 +1,7 @@
-<%- include("partials/head"); -%>
+<%- include("partials/header"); -%>
 
   <!--custom style-->
-  <link href="css/account.css" rel="stylesheet">
+  <link href="css/user.css" rel="stylesheet">
 
 </head>
 
@@ -17,17 +17,23 @@
       <div class="row">
         <div class="col-6 offset-3">
 
-          <div id="login-div" class="slide-page justify-content-center shadow mb-5 rounded">
+          <form id="login-div" action="/login" method="post" class="slide-page justify-content-center shadow mb-5 rounded">
             <div class="mb-4">
               <p class="info-title mb-4">로그인</p>
             </div>
 
-            <div class="input-group mt-3 mb-4 pl-4 pr-4">
+            <% if (message != "") { %>
+            <div class="alert alert-<%= statusCode == 400 ? 'danger' : 'success' %> mx-4 py-2" role="alert">
+              <%= message %>
+            </div>
+            <%}%>
+
+            <div class="input-group mt-4 mb-4 pl-4 pr-4">
               <div class="input-group-prepend">
                 <span class="input-group-text">
                   <span class="material-icons">person</span>
               </div>
-              <input type="text" class="form-control" placeholder="아이디">
+              <input type="text" class="form-control" placeholder="아이디" name="user_id" required autofocus>
             </div>
 
             <div class="input-group mt-3 pl-4 pr-4">
@@ -35,16 +41,16 @@
                 <span class="input-group-text"">
                   <span class="material-icons">key</span>
               </div>
-              <input type="password" class="form-control" placeholder="비밀번호">
+              <input type="password" class="form-control" placeholder="비밀번호" name="password" required>
             </div>
 
             <div class="info-content-small mt-3 mb-4 pl-4 pr-4">
               <p>계정 아직 없으신가요? <a href="/signup">회원가입</a></p>
             </div>
 
-            <button class="btn mt-4 mb-5 w-50">로그인</button>
+            <button class="btn-theme btn mt-4 w-50" type="submit">로그인</button>
 
-          </div>
+          </form>
 
         </div>
       </div>
@@ -52,4 +58,4 @@
     </div>
   </main>
 
-<%- include("partials/foot"); -%>
+<%- include("partials/footer"); -%>
