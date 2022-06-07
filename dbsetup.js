@@ -21,6 +21,11 @@ db.connect(function(err) {
 
 app.get("/setup_db", function(req, res) {
   var sql = `
+
+  DROP TABLE IF EXISTS user;
+  DROP TABLE IF EXISTS participant;
+  DROP TABLE IF EXISTS session;
+
   CREATE TABLE \`user\` (
         user_id VARCHAR(30) NOT NULL,
         password VARCHAR(100) NOT NULL,
@@ -49,7 +54,7 @@ app.get("/setup_db", function(req, res) {
   CREATE TABLE session (
         session_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
         exam_date DATE NOT NULL,
-        start_time TIME DEFAULT NOW(),
+        start_time TIME,
         end_time TIME,
         duration INT,
         subject VARCHAR(50),
