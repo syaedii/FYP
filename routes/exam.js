@@ -4,8 +4,11 @@ exports.enterRoom = function(req, res) {
   const user_id = req.session.user_id
   if (user_id) {
     db.query('SELECT ?? FROM ?? WHERE entry_code = ?; SELECT ?? FROM ?? WHERE user_id = ?',
-      ['entry_code', 'session', entry_code, ['name', 'ref_id'], 'user', user_id], function(err, results, fields) {
-        if (err) throw err;
+      [['entry_code'], 'session', entry_code, ['name', 'ref_id'], 'user', user_id], function(err, results, fields) {
+        if (err) {
+          console.log("An error at enterRoom.")
+          throw err;
+        }
         if (results[0].length == 1) {
           res.render("room.ejs", {
             entry_code: req.params.entry_code,
