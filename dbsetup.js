@@ -49,7 +49,7 @@ app.get("/setup_db", function(req, res) {
   CREATE TABLE session (
         session_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
         exam_date DATE NOT NULL,
-        start_time TIME DEFAULT NOW(),
+        start_time TIME,
         end_time TIME,
         duration INT,
         subject VARCHAR(50),
