@@ -49,51 +49,8 @@ const exam = require('./routes/exam');
 
 /* -------------------------------------------- */
 
-//Checking DB connection
-// dbMain = connection.dbMain; // main connection
+//Import pool
 db = connection.db; // pool
-// mysqlConfig = connection.mysqlConfig; // db configurations
-
-// function handleDisconnect(dbMain){
-//   dbMain.on('error', function(err){
-//
-//     console.log('\nRe-connecting lost connection: ' + err.stack);
-//     dbMain.destroy();
-//
-//     dbMain = mysql.createConnection(mysqlConfig);
-//     handleDisconnect(connection);
-//     dbMain.connect();
-//
-//   });
-// }
-//
-// handleDisconnect(dbMain);
-
-// dbMain.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Database connected!");
-// });
-
-// function handleDisconnect() {
-//   dbMain.connect(function(err) {
-//     if(err) {
-//       console.log('Error when connecting to db:', err);
-//       setTimeout(handleDisconnect, 2000);
-//     }
-//     console.log("Database connected!");
-//   });
-//
-//   dbMain.on('error', function(err) {
-//     console.log('db error', err);
-//     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-//       return handleDisconnect();
-//     } else {
-//       throw err;
-//     }
-//   });
-// }
-//
-// handleDisconnect();
 
 /* ------- Section for developing pages ------- */
 
