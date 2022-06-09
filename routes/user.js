@@ -8,6 +8,7 @@ const fn = require("../lib/other"); // 정의된 함수들 가져오기
 
 /* ------------------------------ signup 처리 호출 ------------------------------ */
 exports.signup = function(req, res) {
+  req.session.pageName = "signup";
   var message = "";
   var pw = req.body.password;
   var pw_c = req.body.password_confirm;
@@ -83,6 +84,7 @@ exports.signup = function(req, res) {
 
 /* ------------------------------ login 처리 호출 ------------------------------ */
 exports.login = function(req, res) {
+  req.session.pageName = "login";
   var message = "";
   const user_id = req.body.user_id;
   const password = req.body.password;
@@ -128,6 +130,7 @@ exports.logout = function(req, res) {
 
 /* ------------------------------ profile 처리 호출 ------------------------------ */
 exports.profile = function(req,res) {
+  req.session.pageName = "profile";
   const user_id = req.session.user_id;
   var message = req.session.message || "";
 
@@ -147,6 +150,7 @@ exports.profile = function(req,res) {
 
 /* ------------------------------ profile 정보수정 처리 ------------------------------ */
 exports.saveChanges = function(req, res) {
+  req.session.pageName = "profile";
   var user_id = req.session.user_id;
   var pw = req.body.password;
   var new_pw = req.body.new_password;
@@ -171,9 +175,7 @@ exports.saveChanges = function(req, res) {
           req.session.statusCode = 400;
           req.session.message = "비밀번호가 일치하지 않습니다."
           res.redirect("/profile");
-        } else
-
-        if (inputYear <= minYear || inputYear > currentYear || inputMonth == "" || inputDate <= 0 || inputDate > maxDate) {
+        } else if (inputYear <= minYear || inputYear > currentYear || inputMonth == "" || inputDate <= 0 || inputDate > maxDate) {
           req.session.statusCode = 400;
           req.session.message = "생년월일을 제대로 입력하세요!"
           res.redirect("/profile");

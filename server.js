@@ -17,6 +17,7 @@ const peerServer = ExpressPeerServer(server, {
   debug: true,
 });
 
+
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport"),
@@ -49,7 +50,7 @@ const exam = require('./routes/exam');
 
 /* -------------------------------------------- */
 
-//Import pool
+//Importing DB pool
 db = connection.db; // pool
 
 /* ------- Section for developing pages ------- */
