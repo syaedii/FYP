@@ -1,5 +1,6 @@
 /* --------------------------- enter exam 처리 호출 --------------------------- */
 exports.enterRoom = function(req, res) {
+  req.session.pageName = "home";
   const entry_code = req.params.entryCode;
   const user_id = req.session.user_id
   if (user_id) {
@@ -27,6 +28,7 @@ exports.enterRoom = function(req, res) {
 };
 
 exports.createSession = function(req, res) {
+  req.session.pageName = "home";
   var message = "";
 
   db.query('SELECT ?? FROM ?? WHERE entry_code = ?;', ['entry_code', 'session', req.body.entry_code], function(err, results, fields) {
@@ -48,7 +50,6 @@ exports.createSession = function(req, res) {
 
         var query = db.query('INSERT INTO session SET ?', post, function(error, results, fields) {
           if (error) throw error;
-          message = "시험세션이 정상적으로 생성되었습니다.";
           res.redirect('/exam-room/' + post.entry_code);
         });
       }
