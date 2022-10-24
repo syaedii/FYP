@@ -4,7 +4,7 @@
 
 # Xcode
 #
-build/
+#build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -23,7 +23,7 @@ DerivedData
 
 # Android/IntelliJ
 #
-build/
+#build/
 .idea
 .gradle
 local.properties
@@ -63,7 +63,7 @@ buck-out/
 /ios/Pods/
 
 #UI Kit
-agora-rn-uikit/
+#agora-rn-uikit/
 
 #built website
 dist/
