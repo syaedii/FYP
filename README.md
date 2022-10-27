@@ -3,6 +3,10 @@
 This is a prototype for the face detection feature, which will be attached to the webcams of the overall web application afterwards.
 
 ## What to expect from this branch
+You can view the number of face detected from the webcam through the console log.
+![result image](https://github.com/syaedii/FYP/blob/xinyi-2/test-result.png?raw=true)
+
+## How to run
 
 After switching to this branch, you can run the code on your browser by opening go to Hyper terminal, navigate to this project file and run the commands below:
 
