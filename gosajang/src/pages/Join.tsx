@@ -21,13 +21,9 @@ import {MeetingInfoDefaultValue} from '../components/meeting-info/useMeetingInfo
 
 const Join = () => {
   const hasBrandLogo = useHasBrandLogo();
-  //commented for v1 release
-  // const meetingIdInputPlaceholder = useString('meetingIdInputPlaceholder')();
-  // const enterMeetingButton = useString('enterMeetingButton')();
-  // const createMeetingButton = useString('createMeetingButton')();
-  const meetingIdInputPlaceholder = 'Enter Meeting ID';
-  const enterMeetingButton = 'Enter Meeting';
-  const createMeetingButton = 'Create Meeting';
+  const meetingIdInputPlaceholder = 'Enter Exam Session ID';
+  const enterMeetingButton = 'Enter Exam Session';
+  const createMeetingButton = 'Create Exam Session';
   const history = useHistory();
   const [phrase, setPhrase] = useState('');
   const [error, setError] = useState<null | {name: string; message: string}>(
@@ -46,14 +42,7 @@ const Join = () => {
     let components: {
       JoinComponent?: React.ComponentType;
     } = {};
-    // commented for v1 release
-    // if (
-    //   data?.components?.join &&
-    //   typeof data?.components?.join !== 'object' &&
-    //   isValidReactComponent(data?.components?.join)
-    // ) {
-    //   components.JoinComponent = data?.components?.join;
-    // }
+
     return components;
   });
 

@@ -37,30 +37,16 @@ const Share = () => {
   const {
     data: {roomId, pstn, isSeparateHostLink},
   } = useMeetingInfo();
-  //commented for v1 release
-  // const meetingUrlText = useString('meetingUrlLabel')();
-  // const meetingIdText = useString('meetingIdLabel')();
-  // const hostIdText = useString('hostIdLabel')();
-  // const attendeeUrlLabel = useString('attendeeUrlLabel')();
-  // const attendeeIdLabel = useString('attendeeIdLabel')();
-  // const hostUrlLabel = useString('hostUrlLabel')();
-  // const pstnLabel = useString('pstnLabel')();
-  // const pstnNumberLabel = useString('pstnNumberLabel')();
-  // const pinLabel = useString('pin')();
-  // const enterMeetingAfterCreateButton = useString(
-  //   'enterMeetingAfterCreateButton',
-  // )();
-  // const copyInviteButton = useString('copyInviteButton')();
   const meetingUrlText = 'Meeting URL';
   const meetingIdText = 'Meeting ID';
   const hostIdText = 'Host ID';
-  const attendeeUrlLabel = 'Attendee URL';
+  const attendeeUrlLabel = 'Candidate URL';
   const attendeeIdLabel = 'Attendee ID';
-  const hostUrlLabel = 'Host URL';
+  const hostUrlLabel = 'Invigilator URL';
   const pstnLabel = 'PSTN';
   const pstnNumberLabel = 'Number';
   const pinLabel = 'Pin';
-  const enterMeetingAfterCreateButton = 'Start Meeting (as host)';
+  const enterMeetingAfterCreateButton = 'Start Exam Session (as invigilator)';
   const copyInviteButton = 'Copy invite to clipboard';
   const history = useHistory();
   const enterMeeting = () => {

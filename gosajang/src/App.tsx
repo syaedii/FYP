@@ -1,17 +1,23 @@
 import React, {useState} from 'react';
 import {Platform} from 'react-native';
+
 import Join from './pages/Join';
 import VideoCall from './pages/VideoCall';
 import Create from './pages/Create';
+import Login from './pages/Login';
+
 import {Route, Switch, Redirect} from './components/Router';
 import PrivateRoute from './components/PrivateRoute';
 import OAuth from './components/OAuth';
 import StoreToken from './components/StoreToken';
+
 import {shouldAuthenticate} from './utils/common';
 import KeyboardManager from 'react-native-keyboard-manager';
+
 // commented for v1 release
 //import {CustomRoutesInterface, CUSTOM_ROUTES_PREFIX} from 'customization-api';
 //import {useCustomization} from 'customization-implementation';
+
 import AppWrapper from './AppWrapper';
 import {
   MeetingInfoContextInterface,
@@ -43,35 +49,6 @@ declare module 'agora-rn-uikit' {
 }
 
 const App: React.FC = () => {
-  //commented for v1 release
-  //const CustomRoutes = useCustomization((data) => data?.customRoutes);
-  // const RenderCustomRoutes = () => {
-  //   try {
-  //     return (
-  //       CustomRoutes &&
-  //       Array.isArray(CustomRoutes) &&
-  //       CustomRoutes.length &&
-  //       CustomRoutes?.map((item: CustomRoutesInterface, i: number) => {
-  //         let RouteComponent = item?.isPrivateRoute ? PrivateRoute : Route;
-  //         return (
-  //           <RouteComponent
-  //             path={CUSTOM_ROUTES_PREFIX + item.path}
-  //             exact={item.exact}
-  //             key={i}
-  //             failureRedirectTo={
-  //               item.failureRedirectTo ? item.failureRedirectTo : '/'
-  //             }
-  //             {...item.routeProps}>
-  //             <item.component {...item.componentProps} />
-  //           </RouteComponent>
-  //         );
-  //       })
-  //     );
-  //   } catch (error) {
-  //     console.error('Error on rendering the custom routes');
-  //     return null;
-  //   }
-  // };
   const [meetingInfo, setMeetingInfo] = useState<MeetingInfoContextInterface>(
     MeetingInfoDefaultValue,
   );
@@ -84,18 +61,31 @@ const App: React.FC = () => {
             <Switch>
               {/* commented for v1 release */}
               {/* {RenderCustomRoutes()} */}
+
+              {/* Root Redirection */}
               <Route exact path={'/'}>
                 <Redirect to={'/create'} />
               </Route>
+
+              {/* Login Page */}
+              {/* <Route path={'/login'}>
+                <Login />
+              </Route> */}
+
+              {/* Authentication Process */}
               <Route exact path={'/authenticate'}>
                 {shouldAuthenticate ? <OAuth /> : <Redirect to={'/'} />}
               </Route>
               <Route path={'/auth-token/:token'}>
                 <StoreToken />
               </Route>
+
+              {/* Exam Room Join */}
               <Route exact path={'/join'}>
                 <Join />
               </Route>
+
+              {/* Exam Room Creation */}
               {shouldAuthenticate ? (
                 <PrivateRoute
                   path={'/create'}
@@ -107,6 +97,8 @@ const App: React.FC = () => {
                   <Create />
                 </Route>
               )}
+
+              {/* Exam Room */}
               <Route path={'/:phrase'}>
                 <VideoCall />
               </Route>

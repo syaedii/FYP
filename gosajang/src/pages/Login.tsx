@@ -20,12 +20,11 @@ import SDKEvents from '../utils/SdkEvents';
 import {MeetingInfoDefaultValue} from '../components/meeting-info/useMeetingInfo';
 import {useSetMeetingInfo} from '../components/meeting-info/useSetMeetingInfo';
 
-const Create = () => {
+const Login = () => {
   const {CreateComponent} = useCustomization((data) => {
     let components: {
       CreateComponent?: React.ElementType;
     } = {};
-
     return components;
   });
 
@@ -47,10 +46,12 @@ const Create = () => {
       ? 'Restrict Host Controls (Separate host link)'
       : 'Restrict Host Controls (Everyone is a Host)';
   const pstnToggle = (value: boolean) => 'Use PSTN (Join by dialing a number)';
-  const meetingNameInputPlaceholder = 'Name your Exam Session'
+  const meetingNameInputPlaceholder = useString(
+    'meetingNameInputPlaceholder',
+  )();
   const loadingWithDots = 'Loading...';
-  const createMeetingButton = 'Create Exam Session';
-  const haveMeetingID = 'Have a Exam Session ID?';
+  const createMeetingButton = 'Create Meeting';
+  const haveMeetingID = 'Have a Meeting ID?';
 
   useEffect(() => {
     if (isWebInternal()) {
@@ -116,7 +117,9 @@ const Create = () => {
             <View style={style.content}>
               <View style={style.leftContent}>
                 <Text style={style.heading}>{$config.APP_NAME}</Text>
-                <Text style={style.headline}>{$config.LANDING_SUB_HEADING}</Text>
+                <Text style={style.headline}>
+                  {$config.LANDING_SUB_HEADING}
+                </Text>
                 <View style={style.inputs}>
                   <TextInput
                     value={roomTitle}
@@ -162,7 +165,6 @@ const Create = () => {
                       <></>
                     )}
                   </View>
-                  
                   <View style={style.btnContainer}>
                     <PrimaryButton
                       disabled={roomTitle === '' || loading}
@@ -300,4 +302,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default Create;
+export default Login;
