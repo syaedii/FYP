@@ -1,12 +1,13 @@
 /* --------------- NPM Package ---------------- */
-require('dotenv').config();
+require('dotenv').config(); // reference to any private variables
 
+// Use the required packages to run the app
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 const mysql = require("mysql");
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); // Package to set up web pages
 const io = require("socket.io")(server, {
   cors: {
     origin: '*'
@@ -20,9 +21,8 @@ const peerServer = ExpressPeerServer(server, {
 
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const passport = require("passport"),
+const passport = require("passport"), // Package that handle login
   LocalStrategy = require('passport-local').Strategy;
-const fileUpload = require('express-fileupload');
 // const _ = require('lodash');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -32,6 +32,7 @@ app.use("/peerjs", peerServer);
 app.use(express.static("public"));
 
 // Use express-session
+// Create login session that allows the user to stay logged in for up to 1 hour
 app.use(session({
   secret: "Our little secret.",
   resave: false,
@@ -41,35 +42,36 @@ app.use(session({
 
 /* ---------- User-defined Module ------------- */
 const connection = require("./lib/dbconn"); // DB 연결
-const user = require('./routes/user');
-const home = require('./routes/home');
-const exam = require('./routes/exam');
-
-// const room = require('./routes/room');
-// const account = require('./routes/account')
+const user = require('./routes/user'); // Import backend js to handle user signup & login
+const home = require('./routes/home'); // Import backend js to display home page
+const exam = require('./routes/exam'); // Import backend js to handle exam related activity
+const account = require('./routes/account') //
 
 /* -------------------------------------------- */
 
 //Importing DB pool
-db = connection.db; // pool
+db = connection.db; // For database multiple query handling
 
 /* ------- Section for developing pages ------- */
 
 // Root
+// Definite root as redirection to homepage
 app.get("/", (req, res) => {
   res.redirect("/home");
 });
 
 
 // Homepage
-app.get("/home", home.main);
+app.get("/home", home.main); // Call the homepage backend and frontend files
 
+// Generate unique exam room
 app.get("/generate-code", (req, res) => {
   req.session.entry_code = `${uuidv4()}`;
   res.redirect("/home");
 });
 
 // Exam session creation
+// Post request to handle exam session creation
 app.post("/create-session", exam.createSession);
 
 // Enter exam room
